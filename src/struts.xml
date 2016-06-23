@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.saveDir" value="E:\tmp" />
+	<constant name="struts.multipart.maxSize" value="-1" />
+<!-- 	<constant name="struts.ui.theme" value="xhtml"></constant> -->
+    <package name="webos-default" extends="struts-default">
+    	<result-types>
+    		<result-type name="json" class="com.cai.result.JSONResult"/>
+    	</result-types>
+		 <global-results>
+    		<result name="login">/WEB-INF/login.jsp</result>
+    	</global-results>
+    	
+    	<action name="showi18n" class="com.cai.action.RegisterAction" method="input">
+    			<result>
+					/WEB-INF/register.jsp
+				</result>
+				<result name="input">
+					/WEB-INF/register.jsp
+				</result>
+    	</action>
+    	
+    	<action name="doform" class="com.cai.action.RegisterAction" method="excute">
+    			<result>
+					/WEB-INF/register.jsp
+				</result>
+				<result name="input">
+					/WEB-INF/register.jsp
+				</result>
+    	</action>
+    	
+    	<action name="forwardHello" class="com.cai.action.RegisterAction" method="forwardHello">
+    			<result>
+					/WEB-INF/hello.jsp
+				</result>
+    	</action>
+      	<action name="firstAction" class="com.cai.action.HelloWorldAction" method="excute">
+<!--       			<result name="success"> -->
+<!--       				/WEB-INF/hello.jsp -->
+<!--       			</result> -->
+<!-- 				<result type="redirect"> -->
+<!-- 					http://www.baidu.com -->
+<!-- 				</result> -->
+<!-- 					<result type="redirectAction"> -->
+<!-- 						<param name="actionName">ajaxOut</param> -->
+<!-- 					</result> -->
+				<result>
+					/WEB-INF/register.jsp
+				</result>
+      	</action>
+      	<action name="formAction" class="com.cai.action.HelloWorldAction" method="userAdd">
+      			<result>
+      				/WEB-INF/login.jsp
+      			</result>
+      			<result name="input">
+      				/WEB-INF/hello.jsp
+      			</result>
+      	</action>
+      	
+      	<action name="uploadFile" class="com.cai.action.HelloWorldAction" method="uploadFile">
+      			<result name="success">
+      				/WEB-INF/hello.jsp
+      			</result>
+      	</action>
+      	
+      	<action name="ajaxOut" class="com.cai.action.HelloWorldAction" method="ajaxOut">
+      		<result type="json"/>
+<!--       		<interceptor-ref name="timer"/> -->
+<!-- 			<interceptor-ref name="logger"/> -->
+      	</action>
+      	
+    </package>
+</struts>
